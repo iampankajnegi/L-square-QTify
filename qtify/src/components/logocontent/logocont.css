@@ -1,0 +1,26 @@
+.Logo-Container{
+
+   
+    
+    padding: 0  15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+   
+}
+
+.feedback-btn{
+
+      background-color: #121212;
+      color: #34C94B;
+      border-radius: 8px;
+      padding: 10px 15px;
+      font-size:20px;
+      font-weight: 600;
+      cursor: pointer;
+}
+
+
+
+
