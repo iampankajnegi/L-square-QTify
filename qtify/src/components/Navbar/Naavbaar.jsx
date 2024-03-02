@@ -3,6 +3,7 @@ import "./nav.css"
 import logo from "../../assets/QtifyLogo.png"
 import Searchbar from '../Search/Searchbar'
 import Logocontent from '../logocontent/Logocontent'
+import Herosection from '../herosection/Herosection'
 
 
 const Naavbaar = () => {
@@ -23,6 +24,9 @@ const Naavbaar = () => {
 
        
     </div>
+       
+      <Herosection/> 
+
  </>
   )
 }
