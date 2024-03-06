@@ -7,11 +7,11 @@ const Herosection = () => {
 
       <div className="hero-section">
         
-        <div className="left-heading">
-            <h1>100 Thousand Songs, ad-free</h1>
-            <h1>Over thousands podcast episodes</h1>
+        <div className="hero-heading">
+            <p>100 Thousand Songs, ad-free</p>
+            <p>Over thousands podcast episodes</p>
         </div>
-        <div className="right-img">
+        <div className="hero-img">
             <img src={headphone} alt="" />
         </div>
 

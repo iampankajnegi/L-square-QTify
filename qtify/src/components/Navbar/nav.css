@@ -1,21 +1,21 @@
-.nav{
-    height: 74px;
-    background-color:#34C94B;
-    display: flex;
-    justify-content: space-between;
+.naav{
     align-items: center;
-    padding: 10px;
+    background-color: var(--color-primary);
+    display: flex;
+    height: 74px;
+    justify-content: space-between;
+    padding: 0.62rem 1rem;
+    position: relative;
+    width: 100%;
+
     
    
 }
 
-.nav-logo img{
-    margin: 14px;
-    display: flex;
-    height:67px;
-    padding: 0 10px;
-    cursor: pointer;
-  
+.nav-logo{
+    text-decoration: none;
 }
+
+
 
 
