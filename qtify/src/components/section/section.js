@@ -4,6 +4,7 @@ import React from "react";
 import { CircularProgress } from "@mui/material";
 import Cardcomp from "../card/Cardcomp";
 import "./section.css";
+import Carousel from "../Carousel/Carousel";
 
 const Section = ({ title, data, type }) => {
   const [collapseAlbum, setCollapseAlbum] = useState(true);
@@ -28,18 +29,19 @@ const Section = ({ title, data, type }) => {
         <div className="card-album">
           {!collapseAlbum ? (
             <div className="carAlbum-data">
-              {data.map((item) => (
+              {data.map((item ) => (
                 <Cardcomp key={item.id} data={item} type={type} />
               ))}
             </div>
           ) : (
-            <div>
-              <div className="carAlbum-data">
-                {data.slice(0, 8).map((item, index) => (
-                  <Cardcomp key={item.id} data={item} type={type} />
-                ))}
-              </div>
-            </div>
+        
+              <Carousel  
+                
+                data={data}
+                renderCardComponent={(data)=> <Cardcomp data={data} type={type}/>}
+              
+              />
+            
           )}
         </div>
       )}

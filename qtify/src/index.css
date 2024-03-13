@@ -31,3 +31,8 @@ img{
 p{
   color: var(--color-white);
 }
+
+.swiper-slide{
+
+    width: auto !important;
+}

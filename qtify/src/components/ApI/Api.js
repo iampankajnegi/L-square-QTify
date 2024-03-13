@@ -16,3 +16,19 @@ export const Fetchtopalbums = async() => {
 
 };
 
+
+export const Fetchnewalbums = async()=>{
+
+  try{
+
+       const response = await axios.get(`${BACK_ENDPOINT}/albums/new`);
+
+       return response.data
+  }
+
+  catch(error){
+
+              console.log('Error fetching new albums',error)
+  }
+}
+
