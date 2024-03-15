@@ -30,7 +30,10 @@ const Section = ({ title, data, type  }) => {
     <>
       <div className="section-wrapper">
         <h3>{title}</h3>
+
+        {type === "songs" && (
         <Filtercomponent  data={data} onDataFilter={handleFilter}/>
+        )}
         {type !=="songs" &&(
         <h4 className="toggleText" onClick={handleToggle}>
           {collapseAlbum ? "Show" : "Collapse"}
@@ -46,7 +49,17 @@ const Section = ({ title, data, type  }) => {
         
           {!collapseAlbum  ? (
             <div className="carAlbum-data">
-              {data.map((item ,index ) => (
+             
+             {filterData.length >0 ?
+             
+               filterData.map((item , index)=>(
+                <Cardcomp key={index} data ={item} type={type}/>
+               ))
+
+             
+               
+
+              : data.map((item ,index ) => (
                 <Cardcomp key={index} data={item} type={type} />
               ))}
             </div>
@@ -54,7 +67,7 @@ const Section = ({ title, data, type  }) => {
          
               <Carousel  
                 
-                data={data}
+              data={type === "songs" ? filterData : data}
                 renderCardComponent={(data)=> <Cardcomp data={data} type={type}/>}
               
               />

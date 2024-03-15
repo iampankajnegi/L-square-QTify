@@ -27,7 +27,9 @@ const Filtercomponent = ({ data, onDataFilter }) => {
   const filterSong = (tab) => {
     if (tab === "All") {
       onDataFilter(data);
-    } else {
+    } 
+    
+    else {
       const songResult = data.filter((song) => song.genre.label === tab);
       onDataFilter(songResult);
     }
@@ -57,6 +59,7 @@ const Filtercomponent = ({ data, onDataFilter }) => {
                 onClick={handleGenreClick}
               >
                 {genre.label}
+                    
               </p>
             ))}
           </>

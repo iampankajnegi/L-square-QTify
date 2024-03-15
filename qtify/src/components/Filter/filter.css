@@ -20,6 +20,7 @@
   
   .active {
     position: relative;
+    border-bottom: 2px solid red;
   }
   .active::after {
     position: absolute;
