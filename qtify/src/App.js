@@ -4,7 +4,7 @@ import './App.css';
 
 import Naavbaar from './components/Navbar/Naavbaar';
 import Section from "./components/section/section"
-import {Fetchnewalbums, Fetchtopalbums} from "./components/ApI/Api"
+import {Fetchgensongs, Fetchnewalbums, Fetchtopalbums} from "./components/ApI/Api"
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -12,6 +12,8 @@ function App() {
   const [topAlbumData, setTopAlbumData] = useState([]);
 
   const [newAlbumData , setnewAlbumData] = useState([]);
+
+  const [topSongData , setTopSongData] = useState([]);
 
 
   // Fetch top album data
@@ -48,14 +50,40 @@ catch(error){
 }
 }
 
+    //  fetching song
+
+
+
+    const generateSongData = async()=>{
+
+  try{
+
+    const songData = await Fetchgensongs();
+
+    console.log(songData , "new")
+
+     setTopSongData(songData)
+}
+
+
+catch(error){
+
+ console.log("Error in generating song Data",error)
+}
+}
+
   
   useEffect(() => {
     generateTopAlbumData();
     generateNewAlbumData();
+    generateSongData();
+
   }, []);
  
   console.log(topAlbumData, "string");
   console.log(newAlbumData, "song")
+  console.log(topSongData,"topsongs")
+
   return (
   <>
    <Naavbaar/>
@@ -63,6 +91,8 @@ catch(error){
     <div className="middel-wrapper">
    <Section type ="album" title = "Top Albums" data = {topAlbumData}  />
    <Section type= "album" title="New Albums" data={newAlbumData} />
+   <Section type="songs" title="Song" data={topSongData}  />
+  
    </div>
   </>
   );

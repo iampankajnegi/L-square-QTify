@@ -32,3 +32,40 @@ export const Fetchnewalbums = async()=>{
   }
 }
 
+
+export const Fetchgensongs = async()=>{
+
+ try{
+
+   const response = await axios.get(`${BACK_ENDPOINT}/songs`);
+   return response.data
+   
+}
+catch(error){
+
+   console.log("Error fetching songs", error)
+}
+}
+
+
+
+
+
+ 
+export const Fetchgengenre = async()=>{
+
+  try{
+ 
+    const response = await axios.get(`${BACK_ENDPOINT}/genres`);
+    return response.data
+
+  
+    
+ }
+ catch(error){
+ 
+    console.log("Error fetching songs", error)
+ }
+
+ 
+ }
