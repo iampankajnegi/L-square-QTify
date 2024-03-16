@@ -15,7 +15,7 @@ const Section = ({ title, data, type }) => {
     if (type === "songs") {
       setFilterData(data);
     }
-  }, [data, type]);
+  }, [data , type]);
 
   console.log(data, "sectiondata");
 
@@ -50,7 +50,7 @@ const Section = ({ title, data, type }) => {
         <div className="card-album">
           {!collapseAlbum ? (
             <div className="carAlbum-data">
-              {filterData.map((item, index) => (
+              {data.map((item, index) => (
                 <Cardcomp key={index} data={item} type={type} />
               ))}
             </div>
