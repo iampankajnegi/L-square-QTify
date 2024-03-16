@@ -6,7 +6,6 @@ import "./filter.css";
 const Filtercomponent = ({ data, onDataFilter }) => {
   const [genData, setGenresData] = useState([]);
   const [isActive, setIsActive] = useState("All");
-  const [loading, setLoading] = useState(true);
 
   const genrateGenresData = async () => {
     try {
@@ -14,12 +13,10 @@ const Filtercomponent = ({ data, onDataFilter }) => {
       console.log(result.data, "result"); // Check the format of result here
   
         setGenresData(result.data);
-        setLoading(false)
     
       
     } catch (error) {
       console.log("Error in genres", error);
-      setLoading(false)
     }
   };
 
@@ -47,10 +44,7 @@ const Filtercomponent = ({ data, onDataFilter }) => {
   return (
     <div>
       <div className="filters">
-      {loading ? (
-          <p>Loading genres...</p>
-        ):
-         genData.length !== 0 ? (
+        { genData.length !== 0 ? (
           <>
             <p
               className={isActive === "All" ? "active" : ""}

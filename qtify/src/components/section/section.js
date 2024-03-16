@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 
 import { CircularProgress } from "@mui/material";
@@ -7,31 +7,27 @@ import "./section.css";
 import Carousel from "../Carousel/Carousel";
 import Filtercomponent from "../Filter/Filtercomponent";
 
-const Section = ({ title, data, type  }) => {
+const Section = ({ title, data, type }) => {
   const [collapseAlbum, setCollapseAlbum] = useState(true);
-  const [filterData , setFilterData] = useState(data)
+  const [filterData, setFilterData] = useState(data);
 
   useEffect(() => {
     if (type === "songs") {
       setFilterData(data);
     }
-  },[data,type]);
+  }, [data, type]);
 
   console.log(data, "sectiondata");
-  
-  
-  
+
   const handleToggle = () => {
     setCollapseAlbum(!collapseAlbum);
-    
   };
 
-  const handleFilter =(songData)=>{
+  const handleFilter = (songData) => {
+    setFilterData(songData);
+  };
 
-      setFilterData(songData)
-  }
-
-  console.log(filterData ,"filterData")
+  console.log(filterData, "filterData");
 
   return (
     <>
@@ -39,50 +35,34 @@ const Section = ({ title, data, type  }) => {
         <h3>{title}</h3>
 
         {type === "songs" && (
-        <Filtercomponent  data={data} onDataFilter={handleFilter}/>
+          <Filtercomponent data={data} onDataFilter={handleFilter} />
         )}
-        {type !=="songs" &&(
-        <h4 className="toggleText" onClick={handleToggle}>
-          {collapseAlbum ? "Show" : "Collapse"}
-        </h4>
-      )}
+        {type !== "songs" && (
+          <h4 className="toggleText" onClick={handleToggle}>
+            {collapseAlbum ? "Show All" : "Collapse"}
+          </h4>
+        )}
       </div>
 
-      {data.length === 0 ? ( 
+      {data.length === 0 ? (
         <CircularProgress />
       ) : (
         <div className="card-album">
-         
-        
-          {!collapseAlbum  ? (
+          {!collapseAlbum ? (
             <div className="carAlbum-data">
-             
-             
-             
-              {filterData.map((item , index)=>(
-                <Cardcomp key={index} data ={item} type={type}/>
-               ))}
-
-             
-               
-
-             
-              
+              {filterData.map((item, index) => (
+                <Cardcomp key={index} data={item} type={type} />
+              ))}
             </div>
           ) : (
             <>
-           
-            
-         
-              <Carousel  
-              
-                
-
-              data={  type === "songs" ? filterData : data}
-                renderCardComponent={(data)=> <Cardcomp data={data} type={type}/>} 
-          
+              <Carousel
+                data={type === "songs" ? filterData : data}
+                renderCardComponent={(data) => (
+                  <Cardcomp data={data} type={type} />
+                )}
               />
-         </>
+            </>
           )}
         </div>
       )}
