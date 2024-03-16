@@ -44,7 +44,7 @@ const Filtercomponent = ({ data, onDataFilter }) => {
   return (
     <div>
       <div className="filters">
-        {genData && genData.length !== 0 ? (
+        { genData.length !== 0 ? (
           <>
             <p
               className={isActive === "All" ? "active" : ""}

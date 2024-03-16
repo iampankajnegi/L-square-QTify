@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import React from "react";
 
 import { CircularProgress } from "@mui/material";
@@ -11,9 +11,16 @@ const Section = ({ title, data, type  }) => {
   const [collapseAlbum, setCollapseAlbum] = useState(true);
   const [filterData , setFilterData] = useState(data)
 
- 
+  useEffect(() => {
+    if (type === "songs") {
+      setFilterData(data);
+    }
+  },[data,type]);
 
   console.log(data, "sectiondata");
+  
+  
+  
   const handleToggle = () => {
     setCollapseAlbum(!collapseAlbum);
     
@@ -50,28 +57,32 @@ const Section = ({ title, data, type  }) => {
           {!collapseAlbum  ? (
             <div className="carAlbum-data">
              
-             {filterData.length >0 ?
              
-               filterData.map((item , index)=>(
+             
+              {filterData.map((item , index)=>(
                 <Cardcomp key={index} data ={item} type={type}/>
-               ))
+               ))}
 
              
                
 
-              : data.map((item ,index ) => (
-                <Cardcomp key={index} data={item} type={type} />
-              ))}
+             
+              
             </div>
           ) : (
+            <>
+           
+            
          
               <Carousel  
-                
-              data={type === "songs" ? filterData : data}
-                renderCardComponent={(data)=> <Cardcomp data={data} type={type}/>}
               
+                
+
+              data={  type === "songs" ? filterData : data}
+                renderCardComponent={(data)=> <Cardcomp data={data} type={type}/>} 
+          
               />
-         
+         </>
           )}
         </div>
       )}
